@@ -1,6 +1,4 @@
 # encoding: utf-8
-
-
 __kupfer_name__ = _("Vivaldi Bookmarks")
 __kupfer_sources__ = ("BookmarksSource", )
 __kupfer_actions__ = ()

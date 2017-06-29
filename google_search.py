@@ -1,7 +1,7 @@
 __kupfer_name__ = _("Google Search")
 __kupfer_actions__ = ("GoogleSearch", )
 __description__ = _("Search Google with results shown in browser")
-__version__ = ""
+__version__ = "2017-1"
 __author__ = "thorko"
 
 import http.client

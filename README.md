@@ -11,3 +11,8 @@ Install recollindex and use this plugin to query recoll
 
 #### KDE5 Session Management
 This plugin will add Restart, Suspend, Save Session... for KDE Plasma to Kupfer
+
+### Installation
+put these files to kupfer/plugin directory and restart kupfer
+
+enable them in the preference window
