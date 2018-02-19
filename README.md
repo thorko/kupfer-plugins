@@ -12,6 +12,11 @@ Install recollindex and use this plugin to query recoll
 #### KDE5 Session Management
 This plugin will add Restart, Suspend, Save Session... for KDE Plasma to Kupfer
 
+#### SSH Yakuake Session
+This plugin starts a new SSH sessin in yakuake
+use it with
+. hostname <tab> SSHSession
+
 ### Installation
 put these files to kupfer/plugin directory and restart kupfer
 
