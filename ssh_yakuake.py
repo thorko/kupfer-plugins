@@ -10,7 +10,7 @@ from kupfer import utils
 
 class SSHSession (Action):
     def __init__(self):
-        Action.__init__(self, _("SSHSession"))
+        Action.__init__(self, _("sshYakuake"))
 
     def activate(self, leaf):
         new_cmd = ['qdbus', 'org.kde.yakuake', '/yakuake/sessions', 'org.kde.yakuake.addSession']
