@@ -17,11 +17,20 @@ class Hwdb (Action):
         return True
 
     def activate(self, leaf, ctx):
-        cmd = ['ssh x10734 "hwdb ip" | grep %s' % leaf.object]
-        info = subprocess.check_output(cmd, stderr=subprocess.STDOUT, shell=True)
+        #cmd = ['ssh x10734 "hwdb ip" | grep "%s"' % leaf.object]
+        cmd = ['ssh', 'x10734', 'hwdb', 'ip', '|', 'grep', '"%s"' % leaf.object]
+        #info = subprocess.check_output(cmd, stderr=subprocess.STDOUT, shell=True)
+        info = ""
+        p = subprocess.Popen(cmd,stdout=subprocess.PIPE)
+        for line in p.stdout.readlines():
+            info += line.decode("utf-8")
 
-        # display result
-        uiutils.show_text_result(info.decode("utf-8"), title=_("HWDB"), ctx=ctx)
+        if len(info): 
+            # display result
+            uiutils.show_text_result(info, title=_("HWDB"), ctx=ctx)
+        else:
+            uiutils.show_text_result("Nothing found for %s" % leaf.object, title=_("HWDB"), ctx=ctx)
+
 
     def item_types(self):
         yield TextLeaf
@@ -30,5 +39,5 @@ class Hwdb (Action):
         return _("Get information from hwdb")
 
     def get_icon_name(self):
-        return "applications-internet"
+        return "edit-find"
 
