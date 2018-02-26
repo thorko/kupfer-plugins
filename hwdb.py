@@ -4,10 +4,14 @@ __description__ = _("get info from hwdb")
 __version__ = "2018-2"
 __author__ = "thorko"
 
+import gi
+gi.require_version('Notify', '0.7')
+
 from kupfer.objects import Action, Leaf, TextLeaf
 from kupfer import icons, uiutils
 from kupfer import utils
 import subprocess
+from gi.repository import Notify
 
 class Hwdb (Action):
     def __init__(self):
@@ -25,11 +29,16 @@ class Hwdb (Action):
         for line in p.stdout.readlines():
             info += line.decode("utf-8")
 
+        Notify.init("HWDB info")
         if len(info): 
-            # display result
-            uiutils.show_text_result(info, title=_("HWDB"), ctx=ctx)
+            result = info
         else:
-            uiutils.show_text_result("Nothing found for %s" % leaf.object, title=_("HWDB"), ctx=ctx)
+            result = "No information available"
+
+        # display notification window
+        note = Notify.Notification.new(leaf.object, result)
+        note.set_timeout(6000)
+        note.show()
 
 
     def item_types(self):
