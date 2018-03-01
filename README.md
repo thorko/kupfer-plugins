@@ -17,6 +17,9 @@ This plugin starts a new SSH sessin in yakuake
 use it with
 . hostname <tab> SSHSession
 
+#### Dict.cc Translation
+This plugin will translate text german<->english
+
 ### Installation
 put these files to kupfer/plugin directory and restart kupfer
 
