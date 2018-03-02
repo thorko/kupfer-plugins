@@ -20,6 +20,9 @@ use it with
 #### Dict.cc Translation
 This plugin will translate text german<->english
 
+#### Amazon search
+This plugin lets you search amazon directly
+
 ### Installation
 put these files to kupfer/plugin directory and restart kupfer
 
