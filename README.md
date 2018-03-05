@@ -1,7 +1,7 @@
 ### My Kupfer Plugins
 
-#### Google Search
-this plugin searches with google
+#### Internet Search
+this plugin searches the internet with your favorite search engine
 
 #### Vivaldi Bookmarks
 the plugin will import your Vivaldi Bookmarks to Kupfer
