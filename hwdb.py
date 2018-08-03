@@ -6,6 +6,7 @@ __author__ = "thorko"
 
 from kupfer.objects import Action, TextLeaf
 from kupfer import utils, plugin_support, config
+import re
 
 _ALTERNATIVES = (
         "google-chrome-stable",
@@ -31,7 +32,12 @@ class HwDB (Action):
 
     def activate(self, leaf):
         browser_type = __kupfer_settings__["browser_type"]
-        searchhwdb = [browser_type, 'https://nannyfe.prod.denic.de/search?Search=Search&searchpattern=%s' % leaf.object]
+        p = re.compile("^x")
+        r = p.match(leaf.object)
+        if r != None:
+            searchhwdb = [browser_type, 'https://nannyfe.prod.denic.de/search?Search=Search&searchpattern=%s' % leaf.object]
+        else:
+            searchhwdb = [browser_type, 'https://nannyfe.prod.denic.de/host/%s' % leaf.object]
         utils.spawn_async(searchhwdb)
 
     def item_types(self):
