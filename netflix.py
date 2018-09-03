@@ -31,7 +31,7 @@ class Netflix (Action):
 
     def activate(self, leaf):
         browser_type = __kupfer_settings__["browser_type"]
-        searchnetflix = [browser_type, 'https://www.amazon.de/search?q=' % leaf.object]
+        searchnetflix = [browser_type, 'https://www.netflix.com/search?q=%s' % leaf.object]
         utils.spawn_async(searchnetflix)
 
     def item_types(self):
