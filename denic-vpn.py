@@ -55,3 +55,14 @@ class Stop (RunnableLeaf):
 
     def get_icon_name(self):
         return "im-kick-user"
+
+class Restart (RunnableLeaf):
+    def __init__(self):
+        super().__init__(name=_("Restart"))
+
+    def run(self):
+        vpnrestart=["/usr/local/bin/vpnconnect.sh", "stop", "&&", "/usr/local/bin/vpnconnect.sh", "start"]
+        utils.spawn_async(vpnrestart)
+
+    def get_icon_name(self):
+        return "im-user-away"
