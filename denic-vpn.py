@@ -4,7 +4,7 @@ __description__ = _("handle VPN connections")
 __version__ = "2018-9"
 __author__ = "thorko"
 
-from kupfer.objects import Source, RunnableLeaf
+from kupfer.objects import Source, RunnableLeaf, TextLeaf
 from kupfer import utils, plugin_support, config
 
 class VPN (Source):
@@ -38,9 +38,6 @@ class Start (RunnableLeaf):
     def run(self):
         vpnstart=["/usr/local/bin/vpnconnect.sh", "start"]
         utils.spawn_async(vpnstart)
-
-    def item_types(self):
-        yield TextLeaf
 
     def get_icon_name(self):
         return "im-user-online"

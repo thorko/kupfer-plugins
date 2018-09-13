@@ -23,6 +23,12 @@ This plugin will translate text german<->english
 #### Amazon search
 This plugin lets you search amazon directly
 
+#### Netflix
+Watch your favorite series on netflix
+Needs a configfile ~/netflixseries
+<serie>=<id>
+Bugs Bunny=2727727
+
 ### Installation
 put these files to kupfer/plugin directory and restart kupfer
 
