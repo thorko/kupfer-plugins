@@ -14,8 +14,9 @@ This plugin will add Restart, Suspend, Save Session... for KDE Plasma to Kupfer
 
 #### SSH Yakuake Session
 This plugin starts a new SSH sessin in yakuake
-use it with
-. hostname <tab> SSHSession
+Needs a config file ~/sshhosts
+<hostname>
+<hostname>
 
 #### Dict.cc Translation
 This plugin will translate text german<->english

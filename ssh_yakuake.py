@@ -1,16 +1,52 @@
 __kupfer_name__ = _("SSH yakuake")
-__kupfer_actions__ = ("SSHSession", )
+__kupfer_sources__ = ("SSHSession", )
+__kupfer_actions__ = ("Connect", )
 __description__ = _("Open SSH Session in yakuake")
 __version__ = "2018-2"
 __author__ = "thorko"
 
 import subprocess
-from kupfer.objects import Action, TextLeaf
+import os
+from kupfer.objects import Source, Action, TextLeaf
 from kupfer import utils
 
-class SSHSession (Action):
+class SSHSession (Source):
+    source_use_cache = False
+    source_user_reloadable = True
     def __init__(self):
-        Action.__init__(self, _("sshYakuake"))
+        super().__init__(_("SSH"))
+        self.mark_for_update()
+
+    def finalize(self):
+        pass
+
+    def is_dynamic(self):
+        return True
+
+    def get_items(self):
+        series = {}
+        ssh_config = os.path.expanduser("~/sshhosts")
+        file = open(ssh_config, "r")
+        for x in file.readlines():
+            series[x.strip("\n")] = x.strip("\n")
+
+        return[TextLeaf(value, name=key) for key, value in series.items()]
+
+    def provides(self):
+        yield TextLeaf
+
+    def get_gicon(self):
+        return "view-presentation"
+    
+    def description(self):
+        return __description__
+
+    def get_icon_name(self):
+        return "view-presentation"
+
+class Connect (Action):
+    def __init__(self):
+        Action.__init__(self, _("connect..."))
 
     def activate(self, leaf):
         new_cmd = ['qdbus', 'org.kde.yakuake', '/yakuake/sessions', 'org.kde.yakuake.addSession']
@@ -24,7 +60,7 @@ class SSHSession (Action):
         yield TextLeaf
 
     def get_description(self):
-        return _("Open ssh session in your favorite terminal")
+        return _("Open ssh session in your yakuake")
 
     def get_icon_name(self):
         return "applications-internet"
