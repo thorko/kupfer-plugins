@@ -20,6 +20,7 @@ class VPN (Source):
     def get_items(self):
         yield Start()
         yield Stop()
+        yield Restart()
 
     def provides(self):
         yield RunnableLeaf
