@@ -14,9 +14,13 @@ This plugin will add Restart, Suspend, Save Session... for KDE Plasma to Kupfer
 
 #### SSH Yakuake Session
 This plugin starts a new SSH sessin in yakuake
+
 Set your config file in the plugin settings
+
+```
 <hostname>
 <hostname>
+```
 
 #### Dict.cc Translation
 This plugin will translate text german<->english
@@ -26,12 +30,17 @@ This plugin lets you search amazon directly
 
 #### Netflix
 Watch your favorite series on netflix
+
 Set your config file in the plugin settings
+
+```
 <serie>=<id>
 Bugs Bunny=2727727
+```
 
 ### Installation
 put these files to kupfer/plugin directory and restart kupfer
+
 normally this would be $HOME/.local/share/kupfer/plugins
 
 enable them in the preference window
