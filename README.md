@@ -14,7 +14,7 @@ This plugin will add Restart, Suspend, Save Session... for KDE Plasma to Kupfer
 
 #### SSH Yakuake Session
 This plugin starts a new SSH sessin in yakuake
-Needs a config file ~/sshhosts
+Set your config file in the plugin settings
 <hostname>
 <hostname>
 
@@ -26,7 +26,7 @@ This plugin lets you search amazon directly
 
 #### Netflix
 Watch your favorite series on netflix
-Needs a configfile ~/netflixseries
+Set your config file in the plugin settings
 <serie>=<id>
 Bugs Bunny=2727727
 

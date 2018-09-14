@@ -8,8 +8,17 @@ __author__ = "thorko"
 import subprocess
 import os
 from kupfer.objects import Source, Action, TextLeaf
-from kupfer import utils
+from kupfer import utils, plugin_support
 
+
+__kupfer_settings__ = plugin_support.PluginSettings(
+        {
+            "key": "config_file",
+            "label": _("Your ssh host file"),
+            "type": str,
+            "value": "~/sshhosts"
+        }
+)
 class SSHSession (Source):
     source_use_cache = False
     source_user_reloadable = True
@@ -25,7 +34,7 @@ class SSHSession (Source):
 
     def get_items(self):
         series = {}
-        ssh_config = os.path.expanduser("~/sshhosts")
+        ssh_config = os.path.expanduser(__kupfer_settings__['config_file'])
         file = open(ssh_config, "r")
         for x in file.readlines():
             series[x.strip("\n")] = x.strip("\n")

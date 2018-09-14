@@ -23,6 +23,12 @@ __kupfer_settings__ = plugin_support.PluginSettings(
             "type": str,
             "value": "google-chrome-stable",
             "alternatives": _ALTERNATIVES,
+        }, 
+        {
+            "key": "config_file",
+            "label": _("Your netflix series file"),
+            "type": str,
+            "value": "~/netflixseries"
         }
 )
 
@@ -41,7 +47,7 @@ class Netflix (Source):
 
     def get_items(self):
         series = {}
-        netflix_config = os.path.expanduser("~/netflixseries")
+        netflix_config = os.path.expanduser(__kupfer_settings__['config_file'])
         file = open(netflix_config, "r")
         for x in file.readlines():
             s = x.split("=")
