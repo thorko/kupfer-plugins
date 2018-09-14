@@ -20,6 +20,9 @@ Set your config file in the plugin settings
 ```
 <hostname>
 <hostname>
+# or
+<shortname>=<hostname>
+tk=thorko.de
 ```
 
 #### Dict.cc Translation
