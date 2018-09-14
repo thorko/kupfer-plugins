@@ -32,5 +32,6 @@ Bugs Bunny=2727727
 
 ### Installation
 put these files to kupfer/plugin directory and restart kupfer
+normally this would be $HOME/.local/share/kupfer/plugins
 
 enable them in the preference window

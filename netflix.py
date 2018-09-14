@@ -46,8 +46,8 @@ class Netflix (Source):
         for x in file.readlines():
             s = x.split("=")
             series[s[0]] = s[1].strip("\n")
-
-        return[TextLeaf(value, name=key) for key, value in series.items()]
+        return[Series(value,key) for key, value in series.items()]
+        #return[TextLeaf(value, name=key) for key, value in series.items()]
 
     def provides(self):
         yield TextLeaf
@@ -60,6 +60,14 @@ class Netflix (Source):
 
     def get_icon_name(self):
         return "visibility"
+
+
+class Series (TextLeaf):
+    def __init__(self, value, key):
+        TextLeaf.__init__(self, value, name=key)
+
+    def get_icon_name(self):
+        return "geany-build"
 
 
 class Watch (Action):

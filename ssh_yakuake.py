@@ -30,7 +30,7 @@ class SSHSession (Source):
         for x in file.readlines():
             series[x.strip("\n")] = x.strip("\n")
 
-        return[TextLeaf(value, name=key) for key, value in series.items()]
+        return[Host(value, key) for key, value in series.items()]
 
     def provides(self):
         yield TextLeaf
@@ -43,6 +43,13 @@ class SSHSession (Source):
 
     def get_icon_name(self):
         return "view-presentation"
+
+class Host (TextLeaf):
+    def __init__(self, value, key):
+        TextLeaf.__init__(self, value, name=key)
+
+    def get_icon_name(self):
+        return "path-reverse"
 
 class Connect (Action):
     def __init__(self):
