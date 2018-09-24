@@ -6,7 +6,7 @@ __version__ = "2018-2"
 __author__ = "thorko"
 
 import subprocess
-import os
+import os, re
 from kupfer.objects import Source, Action, TextLeaf
 from kupfer import utils, plugin_support
 
@@ -33,13 +33,17 @@ class SSHSession (Source):
         return True
 
     def get_items(self):
-        series = {}
+        hosts = {}
         ssh_config = os.path.expanduser(__kupfer_settings__['config_file'])
         file = open(ssh_config, "r")
         for x in file.readlines():
-            series[x.strip("\n")] = x.strip("\n")
+            if re.match(r'.*=.*', x) is not None:
+                s = x.split("=")
+                hosts[s[0]] = s[1].strip("\n")
+            else:
+                hosts[x.strip("\n")] = x.strip("\n")
 
-        return[Host(value, key) for key, value in series.items()]
+        return[Host(value, key) for key, value in hosts.items()]
 
     def provides(self):
         yield TextLeaf
