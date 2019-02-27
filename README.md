@@ -37,8 +37,8 @@ Watch your favorite series on netflix
 Set your config file in the plugin settings
 
 ```
-<serie>=<id>
-Bugs Bunny=2727727
+<serie>=<url after netflix.com/>
+Bugs Bunny=title/2392229
 ```
 
 ### Installation
