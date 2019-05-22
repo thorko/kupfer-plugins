@@ -59,8 +59,11 @@ class Restart (RunnableLeaf):
         super().__init__(name=_("Restart"))
 
     def run(self):
-        vpnrestart=["/usr/local/bin/vpnconnect.sh", "stop", "&&", "sleep", "5", "&&", "/usr/local/bin/vpnconnect.sh", "start"]
-        utils.spawn_async(vpnrestart)
+        start=["/usr/local/bin/vpnconnect.sh", "start"]
+        sleep=["sleep", "3"]
+        stop=["/usr/local/bin/vpnconnect.sh", "stop"]
+        restart=start + sleep + stop
+        utils.spawn_async(restart)
 
     def get_icon_name(self):
         return "im-user-away"
