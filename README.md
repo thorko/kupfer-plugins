@@ -47,3 +47,12 @@ put these files to kupfer/plugin directory and restart kupfer
 normally this would be $HOME/.local/share/kupfer/plugins
 
 enable them in the preference window
+
+#### Kli
+grep a path for pattern and display files which contain
+this pattern
+paths_to_search = your search path to use grep for
+will be used in grep
+```
+grep -ilR "<pattern>" /home/thorko/tmux/*.log
+```
