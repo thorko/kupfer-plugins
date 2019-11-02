@@ -51,7 +51,7 @@ class SearchMyNotes (Source):
 
     def get_items(self):
         paths = __kupfer_settings__["paths_to_search"]
-        grep_command = ("/usr/bin/grep -liR '%s' %s" % (self.query, paths))
+        grep_command = ("/usr/bin/grep -liER '%s' %s" % (self.query, paths))
         p1 = subprocess.Popen(grep_command, shell=True, stdout=subprocess.PIPE)
 
         def get_locate_output(proc, offset=0):
