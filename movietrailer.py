@@ -41,4 +41,4 @@ class MovieTrailer (Action):
         return __description__
 
     def get_icon_name(self):
-        return "visibility"
+        return "gtk-execute"
