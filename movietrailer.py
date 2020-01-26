@@ -9,12 +9,29 @@ import urllib.parse
 from kupfer.objects import Action, TextLeaf
 from kupfer import utils, plugin_support, config
 
+_ALTERNATIVES = (
+        "german",
+        "english",
+        "spanish",
+)
+
+__kupfer_settings__ = plugin_support.PluginSettings(
+        {
+            "key": "language",
+            "label": _("Your language for the trailer"),
+            "type": str,
+            "value": "german",
+            "alternatives": _ALTERNATIVES,
+        }
+)
+
 class MovieTrailer (Action):
     def __init__(self):
         Action.__init__(self, _("Trailer"))
 
     def activate(self, leaf):
-        query_url = "https://www.youtube.com/results?search_query=" + leaf.object + "+trailer+german"
+        language = __kupfer_settings__["language"]
+        query_url = "https://www.youtube.com/results?search_query=" + leaf.object + "+trailer+" + language
         utils.show_url(query_url)
 
     def item_types(self):
