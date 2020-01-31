@@ -52,7 +52,7 @@ class InternetSearch (Action):
     def get_icon_name(self):
         return "edit-find"
 
-class Site(Action:
+class Site(Action):
     def __init__(self):
         Action.__init__(self, _("Open Site"))
 
