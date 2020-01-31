@@ -57,7 +57,7 @@ class Site(Action):
         Action.__init__(self, _("Open Site"))
 
     def activate(self, leaf):
-        query_url = urllib.parse.urlencode({"q": leaf.object})
+        query_url = "http://" + leaf.object
         utils.show_url(query_url)
 
     def item_types(self):
