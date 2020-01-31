@@ -1,5 +1,5 @@
 __kupfer_name__ = _("Internet Search")
-__kupfer_actions__ = ("InternetSearch", )
+__kupfer_actions__ = ("InternetSearch", "Site")
 __description__ = _("Search the internet with results shown in browser")
 __version__ = "2017-1"
 __author__ = "thorko"
@@ -17,7 +17,7 @@ _ALTERNATIVES = (
         "Bing",
 )
 
-URLS = { 
+URLS = {
         "Google" : "https://www.google.com/search",
         "DuckDuckGo" : "https://duckduckgo.com",
         "Startpage" : "https://www.startpage.com/do/search",
@@ -52,3 +52,19 @@ class InternetSearch (Action):
     def get_icon_name(self):
         return "edit-find"
 
+class Site(Action:
+    def __init__(self):
+        Action.__init__(self, _("Open Site"))
+
+    def activate(self, leaf):
+        query_url = urllib.parse.urlencode({"q": leaf.object})
+        utils.show_url(query_url)
+
+    def item_types(self):
+        yield TextLeaf
+
+    def get_description(self):
+        return _("open the url in browser")
+
+    def get_icon_name(self):
+        return "applications-internet"
