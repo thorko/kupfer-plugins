@@ -16,6 +16,7 @@ _ALTERNATIVES = (
         "Startpage",
         "Bing",
         "Qwant",
+        "SearchEncrypt",
 )
 
 URLS = {
@@ -24,6 +25,7 @@ URLS = {
         "Startpage" : "https://www.startpage.com/do/search",
         "Bing" : "https://www.bing.com/search",
         "Qwant" : "https://www.qwant.com/",
+        "SearchEncrypt" : "https://www.searchencrypt.com/search/",
 }
 
 __kupfer_settings__ = plugin_support.PluginSettings(
