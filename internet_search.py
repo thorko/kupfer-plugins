@@ -4,6 +4,7 @@ __description__ = _("Search the internet with results shown in browser")
 __version__ = "2017-1"
 __author__ = "thorko"
 
+
 import http.client
 import urllib.parse
 
