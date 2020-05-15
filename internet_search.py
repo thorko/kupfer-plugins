@@ -15,6 +15,7 @@ _ALTERNATIVES = (
         "DuckDuckGo",
         "Startpage",
         "Bing",
+        "Qwant",
 )
 
 URLS = {
@@ -22,6 +23,7 @@ URLS = {
         "DuckDuckGo" : "https://duckduckgo.com",
         "Startpage" : "https://www.startpage.com/do/search",
         "Bing" : "https://www.bing.com/search",
+        "Qwant" : "https://www.qwant.com/",
 }
 
 __kupfer_settings__ = plugin_support.PluginSettings(
