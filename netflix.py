@@ -13,7 +13,7 @@ _ALTERNATIVES = (
         "google-chrome-stable",
         "chromium",
         "firefox",
-        "vivaldi",
+        "vivaldi-stable",
 )
 
 __kupfer_settings__ = plugin_support.PluginSettings(
