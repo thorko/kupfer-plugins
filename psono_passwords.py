@@ -1,5 +1,5 @@
 __kupfer_name__ = _("Psono")
-__kupfer_actions__ = ("PsonoPass", )
+__kupfer_actions__ = ("PsonoPass", "CopyUser", "CopyPass", )
 __description__ = _("Copy password to clipboard (copyq)")
 __version__ = "2020-7"
 __author__ = "thorko"
