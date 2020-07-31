@@ -56,3 +56,12 @@ will be used in grep
 ```
 grep -ilR "<pattern>" /home/thorko/tmux/*.log
 ```
+
+#### Psono Passwords
+before you can use this plugin you have install https://github.com/meldron/psoco
+to your path. Make sure you have setup the api key
+```bash
+psoso search -js 'some password'
+```
+Once this is working you can enable the plugin
+And search with psono
