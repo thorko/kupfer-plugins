@@ -8,7 +8,7 @@ import http.client
 import urllib.parse
 
 from kupfer.objects import Action, TextLeaf
-from kupfer import utils
+from kupfer import utils, plugin_support
 
 
 __kupfer_settings__ = plugin_support.PluginSettings(
