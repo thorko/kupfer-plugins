@@ -27,7 +27,7 @@ class JiraSearch (Action):
 
     def activate(self, leaf):
         search_url = __kupfer_settings__["jira_url"]
-        query_url = search_url + "/browse/" + urllib.parse.urlencode({"s": leaf.object})
+        query_url = search_url + "/browse/" + urllib.parse.urlencode({leaf.object})
         utils.show_url(query_url)
 
     def item_types(self):
