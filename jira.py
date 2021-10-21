@@ -5,7 +5,6 @@ __version__ = "2021-10"
 __author__ = "thorko"
 
 import http.client
-import urllib.parse
 
 from kupfer.objects import Action, TextLeaf
 from kupfer import utils, plugin_support
@@ -27,7 +26,7 @@ class JiraSearch (Action):
 
     def activate(self, leaf):
         search_url = __kupfer_settings__["jira_url"]
-        query_url = search_url + "/browse/" + urllib.parse.urlencode({leaf.object})
+        query_url = search_url + "/browse/" + leaf.object
         utils.show_url(query_url)
 
     def item_types(self):
@@ -37,4 +36,4 @@ class JiraSearch (Action):
         return _("Search your jira for issue")
 
     def get_icon_name(self):
-        return "dictcc"
+        return "web-browser"
