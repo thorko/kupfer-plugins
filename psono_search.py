@@ -14,17 +14,17 @@ from kupfer import utils, plugin_support, config
 
 class PsonoSearch (Action):
     def __init__(self):
-        Action.__init__(self, _("Internet Search"))
+        Action.__init__(self, _("Psono Search"))
 
     def activate(self, leaf):
-        query_url = "https://pw.thorko.de/#!/datastore/search/" + urllib.parse.urlencode({"q": leaf.object})
+        query_url = "https://pw.thorko.de/#!/datastore/search/" + leaf.object
         utils.show_url(query_url)
 
     def item_types(self):
         yield TextLeaf
 
     def get_description(self):
-        return _("Search your password")
+        return _("Search your passwords")
 
     def get_icon_name(self):
         return "edit-find"
