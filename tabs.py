@@ -6,7 +6,7 @@ __author__ = "Thorsten Mueller"
 
 import subprocess
 from time import sleep
-from kupfer.objects import Leaf, Action, TextSource, TextLeaf
+from kupfer.obj import Leaf, Action, TextSource, TextLeaf
 
 class SearchTabs(Action):
     def __init__(self):

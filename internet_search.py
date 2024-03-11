@@ -8,8 +8,8 @@ __author__ = "thorko"
 import http.client
 import urllib.parse
 
-from kupfer.objects import Action, TextLeaf
-from kupfer import utils, plugin_support, config
+from kupfer.obj import Action, TextLeaf
+from kupfer import launch, plugin_support, config
 
 _ALTERNATIVES = (
         "Google",
@@ -46,7 +46,7 @@ class InternetSearch (Action):
     def activate(self, leaf):
         engine = __kupfer_settings__["search_engine"]
         query_url = URLS[engine] + "?" + urllib.parse.urlencode({"q": leaf.object})
-        utils.show_url(query_url)
+        launch.show_url(query_url)
 
     def item_types(self):
         yield TextLeaf
@@ -63,7 +63,7 @@ class Site(Action):
 
     def activate(self, leaf):
         query_url = "http://" + leaf.object
-        utils.show_url(query_url)
+        launch.show_url(query_url)
 
     def item_types(self):
         yield TextLeaf

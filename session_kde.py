@@ -1,12 +1,12 @@
-__kupfer_name__ = _("KDE5 Session Management")
+__kupfer_name__ = _("KDE6 Session Management")
 __kupfer_sources__ = ("KDEItemsSource", )
 __description__ = _("Special items and actions for KDE environment")
-__version__ = "2017-06-22"
-__author__ = "Thorsten Kohlhepp"
+__version__ = "2023-03-11"
+__author__ = "Thorsten Mueller"
 
 import subprocess
-from kupfer.objects import Source, RunnableLeaf
-from kupfer import utils, pretty
+from kupfer.obj import Source, RunnableLeaf
+from kupfer.support import pretty
 
 def launch_argv_with_fallbacks(commands, print_error=True):
     """Try the sequence of @commands with utils.spawn_async,
@@ -14,9 +14,9 @@ def launch_argv_with_fallbacks(commands, print_error=True):
     return False if no command is successful and log an error
     """
     for argv in commands:
-        pretty.print_error(__name__, 'command: ', argv)
+        #pretty.print_error(__name__, 'command: ', argv)
         subprocess.Popen(argv, shell=True, stdout=subprocess.PIPE)
-    pretty.print_error(__name__, "Unable to run command(s)", commands)
+    #pretty.print_error(__name__, "Unable to run command(s)", commands)
     return False
 
 class CommandLeaf (RunnableLeaf):
@@ -84,6 +84,26 @@ class SaveSession (CommandLeaf):
     def get_icon_name(self):
         return "document-save"
 
+class Desktop1 (CommandLeaf):
+    """"""
+    def __init__(self, commands, name=None):
+        if not name: name = _("Desktop 1")
+        CommandLeaf.__init__(self, commands, name)
+    def get_description(self):
+        return _("Desktop 1")
+    def get_icon_name(self):
+        return "document-save"
+
+class Desktop2 (CommandLeaf):
+    """"""
+    def __init__(self, commands, name=None):
+        if not name: name = _("Desktop 2")
+        CommandLeaf.__init__(self, commands, name)
+    def get_description(self):
+        return _("Desktop 2")
+    def get_icon_name(self):
+        return "document-save"
+
 
 class CommonSource (Source):
     def __init__(self, name):
@@ -96,12 +116,14 @@ class CommonSource (Source):
         yield RunnableLeaf
 
 # sequences of argument lists
-LOGOUT_CMD = (["qdbus org.kde.ksmserver /KSMServer logout 0 0 0"])
-SHUTDOWN_CMD = (["qdbus org.kde.ksmserver /KSMServer logout 0 2 0"])
-RESTART_CMD = (["qdbus org.kde.ksmserver /KSMServer logout 0 1 0"])
+LOGOUT_CMD = (["qdbus org.kde.Shutdown logout"])
+SHUTDOWN_CMD = (["qdbus org.kde.Shutdown logoutAndShutdown"])
+RESTART_CMD = (["qdbus org.kde.Shutdown logoutAndReboot"])
 LOCK_CMD = (["qdbus org.kde.ksmserver /ScreenSaver Lock"])
 SUSPEND_CMD = (["qdbus org.kde.Solid.PowerManagement /org/freedesktop/PowerManagement Suspend"])
 SAVE_SESSION_CMD = (["qdbus org.kde.ksmserver /KSMServer saveCurrentSession"])
+DESKTOP_1 = (["qdbus org.kde.KWin /KWin setCurrentDesktop 1"])
+DESKTOP_2 = (["qdbus org.kde.KWin /KWin setCurrentDesktop 2"])
 
 class KDEItemsSource (CommonSource):
     def __init__(self):
@@ -114,6 +136,6 @@ class KDEItemsSource (CommonSource):
             Restart(RESTART_CMD),
             LockScreen(LOCK_CMD),
             SaveSession(SAVE_SESSION_CMD),
+            Desktop1(DESKTOP_1),
+            Desktop2(DESKTOP_2),
         )
-
-

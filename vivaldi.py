@@ -13,12 +13,11 @@ import json
 #from urllib.parse import quote, urlparse
 
 from kupfer import plugin_support
-from kupfer.objects import Source, Action, Leaf
-from kupfer.objects import UrlLeaf, TextLeaf, TextSource
+from kupfer.obj import Source, Action, Leaf, OpenUrl
+from kupfer.obj import UrlLeaf, TextLeaf, TextSource
 from kupfer.obj.apps import AppLeafContentMixin
 from kupfer.obj.helplib import FilesystemWatchMixin
-from kupfer.obj.objects import OpenUrl
-from kupfer import utils
+from kupfer import launch
 
 MAX_ITEMS = 10000
 

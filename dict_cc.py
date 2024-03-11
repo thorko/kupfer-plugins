@@ -7,8 +7,8 @@ __author__ = "thorko"
 import http.client
 import urllib.parse
 
-from kupfer.objects import Action, TextLeaf
-from kupfer import utils
+from kupfer.obj import Action, TextLeaf
+from kupfer import launch
 
 class DictccSearch (Action):
     def __init__(self):
@@ -17,7 +17,7 @@ class DictccSearch (Action):
     def activate(self, leaf):
         search_url = "https://www.dict.cc/"
         query_url = search_url + "?" + urllib.parse.urlencode({"s": leaf.object})
-        utils.show_url(query_url)
+        launch.show_url(query_url)
 
     def item_types(self):
         yield TextLeaf

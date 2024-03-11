@@ -6,8 +6,8 @@ __author__ = "thorko"
 
 import http.client
 
-from kupfer.objects import Action, TextLeaf
-from kupfer import utils, plugin_support
+from kupfer.obj import Action, TextLeaf
+from kupfer import launch, plugin_support
 
 
 __kupfer_settings__ = plugin_support.PluginSettings(
@@ -27,7 +27,7 @@ class JiraSearch (Action):
     def activate(self, leaf):
         search_url = __kupfer_settings__["jira_url"]
         query_url = search_url + "/browse/" + leaf.object
-        utils.show_url(query_url)
+        launch.show_url(query_url)
 
     def item_types(self):
         yield TextLeaf

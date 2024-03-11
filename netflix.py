@@ -6,8 +6,8 @@ __version__ = "2018-9"
 __author__ = "thorko"
 
 import os
-from kupfer.objects import Action, TextLeaf, Source
-from kupfer import utils, plugin_support, config
+from kupfer.obj import Action, TextLeaf, Source
+from kupfer import launch, plugin_support, config
 
 _ALTERNATIVES = (
         "google-chrome-stable",
@@ -23,7 +23,7 @@ __kupfer_settings__ = plugin_support.PluginSettings(
             "type": str,
             "value": "google-chrome-stable",
             "alternatives": _ALTERNATIVES,
-        }, 
+        },
         {
             "key": "config_file",
             "label": _("Your netflix series file"),
@@ -60,7 +60,7 @@ class Netflix (Source):
 
     def get_gicon(self):
         return "visibility"
-    
+
     def description(self):
         return __description__
 
@@ -83,7 +83,7 @@ class Watch (Action):
     def activate(self, leaf):
         browser_type = __kupfer_settings__["browser_type"]
         searchnetflix = [browser_type, 'https://www.netflix.com/%s' % leaf.object]
-        utils.spawn_async(searchnetflix)
+        launch.spawn_async(searchnetflix)
 #
     def item_types(self):
         yield TextLeaf
@@ -93,4 +93,3 @@ class Watch (Action):
 
     def get_icon_name(self):
         return "visibility"
-
