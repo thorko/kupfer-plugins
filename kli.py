@@ -8,11 +8,10 @@ __author__ = "thorko"
 
 import subprocess
 
-from kupfer.objects import Action, Source
-from kupfer.objects import TextLeaf
+from kupfer.obj import Action, Source, TextLeaf
 from kupfer import icons, plugin_support
-from kupfer import kupferstring
-from kupfer.obj.objects import ConstructFileLeaf
+from kupfer.support import kupferstring
+from kupfer.obj import ConstructFileLeaf
 
 __kupfer_settings__ = plugin_support.PluginSettings(
         {

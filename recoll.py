@@ -4,8 +4,9 @@ __description__ = _("Search in recollindex")
 __version__ = "2017-1"
 __author__ = "thorko"
 
-from kupfer.objects import Action, TextLeaf
-from kupfer import utils, pretty
+from kupfer.obj import Action, TextLeaf
+from kupfer import launch
+from kupfer.support import pretty
 
 class RecollIndex (Action):
     def __init__(self):
@@ -13,7 +14,7 @@ class RecollIndex (Action):
 
     def activate(self, leaf):
         search_cmd = ["recoll", "-q", leaf.object]
-        utils.spawn_async(search_cmd)
+        launch.spawn_async(search_cmd)
 
     def item_types(self):
         yield TextLeaf

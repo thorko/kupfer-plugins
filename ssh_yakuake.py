@@ -7,8 +7,8 @@ __author__ = "thorko"
 
 import subprocess
 import os, re
-from kupfer.objects import Source, Action, TextLeaf
-from kupfer import utils, plugin_support
+from kupfer.obj import Source, Action, TextLeaf
+from kupfer import launch, plugin_support
 
 
 __kupfer_settings__ = plugin_support.PluginSettings(
@@ -50,7 +50,7 @@ class SSHSession (Source):
 
     def get_gicon(self):
         return "view-presentation"
-    
+
     def description(self):
         return __description__
 
@@ -72,9 +72,9 @@ class Connect (Action):
         new_cmd = ['qdbus', 'org.kde.yakuake', '/yakuake/sessions', 'org.kde.yakuake.addSession']
         run_cmd = ['qdbus', 'org.kde.yakuake', '/yakuake/sessions', 'runCommand', 'ssh %s' % leaf.object]
         open_cmd = ['qdbus', 'org.kde.yakuake', '/yakuake/window', 'org.kde.yakuake.toggleWindowState']
-        utils.spawn_async(new_cmd)
-        utils.spawn_async(open_cmd)
-        utils.spawn_async(run_cmd)
+        launch.spawn_async(new_cmd)
+        launch.spawn_async(open_cmd)
+        launch.spawn_async(run_cmd)
 
     def item_types(self):
         yield TextLeaf
@@ -84,4 +84,3 @@ class Connect (Action):
 
     def get_icon_name(self):
         return "applications-internet"
-

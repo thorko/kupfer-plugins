@@ -6,8 +6,8 @@ __author__ = "thorko"
 
 import http.client
 import urllib.parse
-from kupfer.objects import Action, TextLeaf
-from kupfer import utils, plugin_support, config
+from kupfer.obj import Action, TextLeaf
+from kupfer import launch, plugin_support, config
 
 _ALTERNATIVES = (
         "german",
@@ -32,7 +32,7 @@ class MovieTrailer (Action):
     def activate(self, leaf):
         language = __kupfer_settings__["language"]
         query_url = "https://www.youtube.com/results?search_query=" + leaf.object + "+trailer+" + language
-        utils.show_url(query_url)
+        launch.show_url(query_url)
 
     def item_types(self):
         yield TextLeaf
