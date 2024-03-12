@@ -127,7 +127,7 @@ DESKTOP_2 = (["qdbus org.kde.KWin /KWin setCurrentDesktop 2"])
 
 class KDEItemsSource (CommonSource):
     def __init__(self):
-        CommonSource.__init__(self, _("KDE5 Session Management"))
+        CommonSource.__init__(self, _("KDE6 Session Management"))
     def get_items(self):
         return (
             Logout(LOGOUT_CMD),
