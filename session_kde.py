@@ -116,9 +116,9 @@ class CommonSource (Source):
         yield RunnableLeaf
 
 # sequences of argument lists
-LOGOUT_CMD = (["qdbus org.kde.Shutdown logout"])
-SHUTDOWN_CMD = (["qdbus org.kde.Shutdown logoutAndShutdown"])
-RESTART_CMD = (["qdbus org.kde.Shutdown logoutAndReboot"])
+LOGOUT_CMD = (["qdbus org.kde.Shutdown /Shutdown logout"])
+SHUTDOWN_CMD = (["qdbus org.kde.Shutdown /Shutdown logoutAndShutdown"])
+RESTART_CMD = (["qdbus org.kde.Shutdown /Shutdown logoutAndReboot"])
 LOCK_CMD = (["qdbus org.kde.ksmserver /ScreenSaver Lock"])
 SUSPEND_CMD = (["qdbus org.kde.Solid.PowerManagement /org/freedesktop/PowerManagement Suspend"])
 SAVE_SESSION_CMD = (["qdbus org.kde.ksmserver /KSMServer saveCurrentSession"])
