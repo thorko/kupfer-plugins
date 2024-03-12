@@ -8,10 +8,9 @@ __author__ = "thorko"
 
 import subprocess
 
-from kupfer.obj import Action, Source, TextLeaf
+from kupfer.obj import Action, Source, TextLeaf, FileLeaf
 from kupfer import icons, plugin_support
 from kupfer.support import kupferstring
-from kupfer.obj import ConstructFileLeaf
 
 __kupfer_settings__ = plugin_support.PluginSettings(
         {
@@ -55,8 +54,7 @@ class SearchMyNotes (Source):
 
         def get_locate_output(proc, offset=0):
             out, ignored_err = proc.communicate()
-            return (ConstructFileLeaf(kupferstring.fromlocale(f))
-                    for f in out.split(b'\n')[offset:-1])
+            return (FileLeaf(kupferstring.fromlocale(f)) for f in out.split(b'\n')[offset:-1])
 
         for F in get_locate_output(p1, 0):
             yield F
