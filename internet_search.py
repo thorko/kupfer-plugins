@@ -12,6 +12,7 @@ from kupfer.obj import Action, TextLeaf
 from kupfer import launch, plugin_support, config
 
 _ALTERNATIVES = (
+        "Perplexity",
         "Google",
         "DuckDuckGo",
         "Startpage",
@@ -21,6 +22,7 @@ _ALTERNATIVES = (
 )
 
 URLS = {
+        "Perplexity": "https://www.perplexity.ai/search/",
         "Google" : "https://www.google.com/search",
         "DuckDuckGo" : "https://duckduckgo.com",
         "Startpage" : "https://www.startpage.com/do/search",
